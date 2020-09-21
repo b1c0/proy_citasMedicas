@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>Administrador</title>
+</h:head>
+<body bgcolor="#D2F8F4">
+	<p:panel header="Bienvenido" style="width:80%">
+		<h:form>
+			<p:tabMenu>
+				<p:menuitem value="Inicio" icon="fa fa-home" action="login" />
+				<p:menuitem value="Enfermedad" icon="pi pi-star" action="vistaEnfermedad" />
+				<p:menuitem value="Especialidad" icon="pi pi-star" action="vistaAdministrador" />
+				<p:menuitem value="Medico" icon="pi pi-star" action="vistaMedico" />
+				<p:menuitem value="Rol" icon="pi pi-star" action="vistaRol" />
+				<p:menuitem value="Usuario" icon="pi pi-star" action="vistaUsuario" />
+				
+			</p:tabMenu>
+		</h:form>
+	</p:panel>
+	<p:panel style="width:80%" header="Registro Paciente">
+		<p:panelGrid columns="2">
+			<h:outputText value="CEDULA" />
+			<p:inputText></p:inputText>
+			<h:outputText value="APELLIDOS" />
+			<p:inputText></p:inputText>
+			<h:outputText value="NOMBRES" />
+			<p:inputText></p:inputText>
+			<h:outputText value="FECHA DE NACIMIENTO" />
+			<p:inputText></p:inputText>
+			<h:outputText value="TELEFONO" />
+			<p:inputText></p:inputText>
+			<h:outputText value="DIRECCION" />
+			<p:inputText></p:inputText>
+			<h:outputText value="CORREO" />
+			<p:inputText></p:inputText>
+			<h:outputText value="CLAVE" />
+			<p:inputText></p:inputText>
+		</p:panelGrid>
+	</p:panel>
+	<p:panel header="Registro de USUARIO">
+		<p:dataTable value="#{beanAdministrador.listaUsuarios}" var="rol">
+			<p:column headerText="Codigo">
+				<h:outputText value="#{rol.idUsuario}" />
+			</p:column>
+			<p:column headerText="Nombre">
+				<h:outputText value="#{rol.nombres}" />
+			</p:column>
+			<p:column headerText="Apellidos">
+				<h:outputText value="#{rol.apellidos}" />
+			</p:column>
+		</p:dataTable>
+	</p:panel>
+</body>
+</html>

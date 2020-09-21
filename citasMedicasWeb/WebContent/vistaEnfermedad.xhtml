@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>Enfermedad</title>
+</h:head>
+<body bgcolor="#D2F8F4">
+	<p:panel header="Bienvenido" style="width:80%">
+		<h:form>
+			<p:tabMenu>
+				<p:menuitem value="Inicio" icon="fa fa-home" action="login" />
+				<p:menuitem value="Enfermedad" icon="pi pi-star" action="vistaEnfermedad" />
+				<p:menuitem value="Especialidad" icon="pi pi-star" action="vistaAdministrador" />
+				<p:menuitem value="Medico" icon="pi pi-star" action="vistaMedico" />
+				<p:menuitem value="Rol" icon="pi pi-star" action="vistaRol" />
+				<p:menuitem value="Paciente" icon="pi pi-star" action="vistaUsuario" />
+				
+			</p:tabMenu>
+		</h:form>
+	</p:panel>
+	<p:panel style="width:80%" header="Registro Enfermedad">
+		<p:panelGrid columns="2">
+			<h:outputText value="NOMBRE" />
+			<p:inputText></p:inputText>
+			<h:outputText value="DESCRIPCION" />
+			<p:inputText></p:inputText>
+			<h:outputText value="SINTOMAS" />
+			<p:inputText></p:inputText>
+			<h:outputText value="TRATAMIENTO" />
+			<p:inputText></p:inputText>
+	
+		</p:panelGrid>
+
+	</p:panel>
+	
+</body>
+</html>
