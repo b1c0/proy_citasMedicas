@@ -2,7 +2,9 @@ package citasmedicas.controller;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.SessionScoped;
@@ -19,22 +21,24 @@ import citasmedicas.view.util.JSFUtil;
 
 
 @Named
-@ConversationScoped
+@SessionScoped
+//@ConversationScoped
 public class BeanUsuario implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	@EJB
 	private ManagerUsuarios mUsuarios;
 	private String correo;
 	private String clave;
 	private boolean confirmadoLogin;
-	private String rol;
-	
+	private String rol;	
 	private String apellido;
 	private String nombre;
 	private int id_usuario;
 
 	public BeanUsuario() {
 	}
+
 
 	public String actionLogin() {
 		try {
@@ -94,6 +98,8 @@ public class BeanUsuario implements Serializable {
 			e.printStackTrace();
 		}
 	}
+	
+
 
 //---------------------------------------------------getters & setters	
 
@@ -137,4 +143,6 @@ public class BeanUsuario implements Serializable {
 		this.id_usuario = id_usuario;
 	}
 
+
+	
 }

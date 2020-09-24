@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+		<title>Registro de Usuarios</title>
+	</f:facet>
+</h:head>
+<body>
+	<div align="center">
+		<h1>SISTEMA DE ADMINISTRACION DE CITAS MÉDICAS</h1>
+		<h2>Registro de Usuarios</h2>
+		<p:panel header="Registro" style="width:400px">
+			<p:growl autoUpdate="true"></p:growl>
+					<p:messages>
+			<p:autoUpdate />
+		</p:messages>
+			<h:form>
+				<p:panelGrid columns="2">
+					<h:outputText value="Cedula:" />
+					<p:inputText value="#{beanRegistro.nuevoUsuario.cedula}" />
+					<h:outputText value="Apellidos:" />
+					<p:inputText value="#{beanRegistro.nuevoUsuario.apellidos}" required="true"></p:inputText>
+					<h:outputText value="Nombres:" />
+					<p:inputText value="#{beanRegistro.nuevoUsuario.nombres}" required="true"></p:inputText>
+					<h:outputText value="Fecha Nacimiento" />
+					<p:calendar value="#{beanRegistro.nuevoUsuario.fechaNacimiento}" required="true"></p:calendar>
+					<h:outputText value="Telefono:" />
+					<p:inputText value="#{beanRegistro.nuevoUsuario.telefono}" required="true" maxlength="13"></p:inputText>
+					<h:outputText value="Direccion:" />
+					<p:inputText value="#{beanRegistro.nuevoUsuario.direccion}" required="true"></p:inputText>
+					<h:outputText value="Correo:" />
+					<p:inputText value="#{beanRegistro.nuevoUsuario.correo}" required="true" type="mail"></p:inputText>
+					<h:outputText value="Clave:" />
+					<p:password value="#{beanRegistro.nuevoUsuario.clave}"></p:password>				
+				</p:panelGrid>
+				<p:commandButton value="Registrarse" action="#{beanRegistro.actionListenerREgistrarUsuario()}"></p:commandButton>
+				<br />
+			</h:form>
+			<h:form>
+			
+			<p:commandButton action="login" value="Cancelar"></p:commandButton>
+			</h:form>
+		</p:panel>
+	</div>
+
+</body>
+</html>

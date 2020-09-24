@@ -21,8 +21,8 @@ import citasmedicas.view.util.JSFUtil;
 
 
 @Named
-//@SessionScoped
-@ConversationScoped
+@SessionScoped
+//@ConversationScoped
 public class BeanSolicitudes implements Serializable {
 
 	private static final long serialVersionUID = 1L;
