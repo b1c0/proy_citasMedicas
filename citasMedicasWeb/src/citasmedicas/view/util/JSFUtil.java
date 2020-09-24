@@ -1,4 +1,4 @@
-package citasMedicas.view.util;
+package citasmedicas.view.util;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;

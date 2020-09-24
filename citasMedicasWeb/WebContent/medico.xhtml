@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<f:metadata>
+	<f:event listener="#{beanUsuario.actionListenerVerificarLogin()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+<h:head>
+	<f:facet name="first">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+		<title>Medico</title>
+	</f:facet>
+
+</h:head>
+<body>
+
+	<p:menubar>
+		<f:facet name="options">
+			<p:commandButton value="Cerrar sesión" icon="fa fa-sing-out"
+				action="#{beanUsuario.actionCerrarSesion()}"></p:commandButton>
+		</f:facet>
+	</p:menubar>
+	<input type="hidden" value="#{beanUsuario.id_usuario}" />
+	<h3>
+		<h:outputText
+			value="Bienvenido(a) #{beanUsuario.apellido} #{beanUsuario.nombre} | #{beanUsuario.correo} " />
+	</h3>
+	<p:growl>
+		<p:autoUpdate />
+	</p:growl>
+	<p:messages>
+		<p:autoUpdate />
+	</p:messages>
+	<br />
+
+	<p:panel header="PANEL DE CITAS | MEDICO">
+		<h:form>
+		</h:form>
+	</p:panel>
+</body>
+</html>

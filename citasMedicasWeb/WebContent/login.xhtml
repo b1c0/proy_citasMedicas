@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+		<title>Login</title>
+	</f:facet>
+</h:head>
+<body>
+	<div align="center">
+	<h1>SISTEMA DE ADMINISTRACION DE CITAS MÉDICAS</h1>
+		<p:panel header="LOGIN" style="width:350px">
+			<p:growl autoUpdate="true"></p:growl>
+			<h:form>
+			<p:panelGrid columns="2">
+			<h:outputText value="Correo:" />
+				<p:inputText value="#{beanUsuario.correo}" required="true"></p:inputText>
+				<h:outputText value="Clave:" />
+				<p:password value="#{beanUsuario.clave}"></p:password>
+				<h:outputText value="" />
+				<p:commandButton value="Ingresar" icon="ui-icon-key"
+					action="#{beanUsuario.actionLogin()}"></p:commandButton>
+			</p:panelGrid>
+				
+			</h:form>
+		</p:panel>
+	</div>
+
+</body>
+</html>
