@@ -8,75 +8,66 @@
 	<title>Enfermedad</title>
 </h:head>
 <body bgcolor="#D2F8F4">
-	<h:form>
-		<p:panel header="Bienvenido" style="width:80%">
-			<h:form>
-				<p:tabMenu>
-					<p:menuitem value="Inicio" icon="fa fa-home" action="login" />
-					<p:menuitem value="Enfermedad" icon="pi pi-star"
-						action="vistaEnfermedad" />
-					<p:menuitem value="Especialidad" icon="pi pi-star"
-						action="vistaAdministrador" />
-					<p:menuitem value="Medico" icon="pi pi-star" action="vistaMedico" />
-					<p:menuitem value="Rol" icon="pi pi-star" action="vistaRol" />
-					<p:menuitem value="Paciente" icon="pi pi-star"
-						action="vistaUsuario" />
+	<p:panel header="Bienvenido" style="width:80%">
+		<h:form>
+			<p:tabMenu>
+				<p:menuitem value="Inicio" icon="fa fa-home" action="login" />
+				<p:menuitem value="Enfermedad" icon="pi pi-star"
+					action="vistaEnfermedad" />
+				<p:menuitem value="Especialidad" icon="pi pi-star"
+					action="vistaAdministrador" />
+				<p:menuitem value="Medico" icon="pi pi-star" action="vistaMedico" />
+				<p:menuitem value="Rol" icon="pi pi-star" action="vistaRol" />
+				<p:menuitem value="Paciente" icon="pi pi-star" action="vistaUsuario" />
 
-				</p:tabMenu>
-			</h:form>
-		</p:panel>
-	</h:form>
-	<p:growl>
-		<p:autoUpdate />
-	</p:growl>
+			</p:tabMenu>
+		</h:form>
+	</p:panel>
 	<h:form id="form1">
 		<p:messages>
 			<p:autoUpdate />
 		</p:messages>
-		<p:panel header="Registro de nuevo Enfermedad">
+		<p:panel header="Registro">
 			<p:panelGrid columns="2">
-				<h:outputText value="Codigo" />
-				<p:inputText value="#{beanAdministrador.enfermedad.idEnfermedad}" />
 				<h:outputText value="Nombre" />
-				<p:inputText
-					value="#{beanAdministrador.enfermedad.nombreEnfermedad}" />
-				<h:outputText value="Descripcion" />
-				<p:inputText
-					value="#{beanAdministrador.enfermedad.descripcionEnfermedad}" />
-
+				<p:inputText value="#{beanAdministrador.enfermedad.nombreEnfermedad}" />
+					<h:outputText value="Descripcion" />
+				<p:inputText value="#{beanAdministrador.enfermedad.descripcionEnfermedad}" />
 				<h:outputText value="Sintomas" />
 				<p:inputText value="#{beanAdministrador.enfermedad.sintomas}" />
-
 				<h:outputText value="Tratamiento" />
 				<p:inputText value="#{beanAdministrador.enfermedad.tratamiento}" />
-
+				
 				<p:commandButton value="Insertar" icon="fa fa-save"
-					update="@form,:form2"
+					update="form1,form2"
 					actionListener="#{beanAdministrador.actionListenerInsertarEnfermedad()}"></p:commandButton>
 			</p:panelGrid>
+			
 		</p:panel>
 	</h:form>
 	<h:form id="form2">
-		<p:panel header="Registro de Enfermedades">
-			<p:dataTable value="#{beanAdministrador.listaEnfermedades}" var="rol">
+		<p:panel header="Registro de Enfermedaddes">
+			<p:dataTable value="#{beanAdministrador.listaEnfermedades}"
+				var="e" paginator="true" rows="5">
 				<p:column headerText="Codigo">
-					<h:outputText value="#{rol.idEnfermedad}" />
+					<h:outputText value="#{e.idEnfermedad}" />
 				</p:column>
 				<p:column headerText="Nombre">
-					<h:outputText value="#{rol.nombreEnfermedad}" />
+					<h:outputText value="#{e.nombreEnfermedad}" />
 				</p:column>
 				<p:column headerText="Descripcion">
-					<h:outputText value="#{rol.descripcionEnfermedad}" />
+					<h:outputText value="#{e.descripcionEnfermedad}" />
 				</p:column>
 				<p:column headerText="Sintomas">
-					<h:outputText value="#{rol.sintomas}" />
+					<h:outputText value="#{e.sintomas}" />
 				</p:column>
 				<p:column headerText="Tratamiento">
-					<h:outputText value="#{rol.sintomas}" />
+					<h:outputText value="#{e.tratamiento}" />
 				</p:column>
+			
 				<p:column headerText="Opciones" priority="1">
-					<p:commandButton icon="fa fa-edit" title="Editar"
-						actionListener="#{beanAdministrador.actionListenerSeleccionarEnfermedad(enfermedad)}"
+									<p:commandButton icon="fa fa-edit" title="Editar"
+						actionListener="#{beanAdministrador.actionListenerSeleccionarEnfermedad(e)}"
 						update=":formEdicion" oncomplete="PF('dlgEdicion').show()">
 
 					</p:commandButton>
@@ -89,38 +80,40 @@
 			<p:growl>
 				<p:autoUpdate />
 			</p:growl>
-			<h:outputText value="Codigo: " />
-			<h:outputText
-				value="#{beanAdministrador.enfermedadSeleccionada.idEnfermedad}" />
-			<p:panelGrid>
-				<p:column headerText="Nombre">
-					<h:outputText
-						value="#{beanAdministrador.enfermedadSeleccionada.nombreEnfermedad}" />
-				</p:column>
-				<p:column headerText="Descripcion">
-					<h:outputText
-						value="#{beanAdministrador.enfermedadSeleccionada.descripcionEnfermedad}" />
-				</p:column>
-				<p:column headerText="Sintomas">
-					<h:outputText
-						value="#{beanAdministrador.enfermedadSeleccionada.sintomas}" />
-				</p:column>
-				<p:column headerText="Tratamiento">
-					<h:outputText
-						value="#{beanAdministrador.enfermedadSeleccionada.tratamiento}" />
-				</p:column>
+		<h:outputText value="Codigo: " /> 
+			<h:outputText value="#{beanAdministrador.enfermedadSeleccionada.idEnfermedad}" />	
+		  
+	<p:panelGrid columns="2"> 
+				<h:outputText value="Nombre " />
+				<h:inputText value="#{beanAdministrador.enfermedadSeleccionada.nombreEnfermedad}" />		
+				<h:outputText value="Descripcion " />
+				<h:inputText value="#{beanAdministrador.enfermedadSeleccionada.descripcionEnfermedad}" />			
+			<h:outputText value="Sintomas " />
+				<h:inputText value="#{beanAdministrador.enfermedadSeleccionada.sintomas}" />	
+					<h:outputText value="Tratamiento " />
+				<h:inputText value="#{beanAdministrador.enfermedadSeleccionada.tratamiento}" />	
+<!-- 				<p:selectOneMenu -->
+<!-- 					value="#{beanAdministrador.especialidad.estadoEspecialidad}"> -->
+<!-- 					<f:selectItem itemLabel="Seleccione estado....." -->
+<!-- 						noSelectionOption="true" /> -->
+<!-- 					<f:selectItem itemLabel="Activo" itemValue="true" /> -->
+<!-- 					<f:selectItem itemLabel="Inactivo" itemValue="false" /> -->
+<!-- 				</p:selectOneMenu> -->
 			</p:panelGrid>
 
 			<p:commandButton value="Actualizar" icon="fa fa-save"
 				update="@form,:form2"
 				actionListener="#{beanAdministrador.actionListenerActualizarEnfermedad()}"></p:commandButton>
 		</h:form>
+
+
 	</p:dialog>
 	<p:confirmDialog glodbal="true" showEffect="fade" hideEffect="fade">
 		<p:commandButton value="Si" type="button"
 			styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
 		<p:commandButton value="No" type="button"
 			styleClass="ui-confirmdialog-no" icon="fa fa-times" />
+
 	</p:confirmDialog>
 </body>
 </html>

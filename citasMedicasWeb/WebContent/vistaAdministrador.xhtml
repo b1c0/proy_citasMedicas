@@ -35,6 +35,7 @@
 				<h:outputText value="Descripcion" />
 				<p:inputText
 					value="#{beanAdministrador.especialidad.nombreEspecialidad}" />
+						<h:outputText value="Estado" />
 				<p:selectOneMenu
 					value="#{beanAdministrador.especialidad.estadoEspecialidad}">
 					<f:selectItem itemLabel="Seleccione el tipo....."
@@ -85,13 +86,13 @@
 			<p:growl>
 				<p:autoUpdate />
 			</p:growl>
-		<h:outputText value="Codigo: " /> -->
+		<h:outputText value="Codigo: " /> 
 		  
-	<p:panelGrid> -->
-<!-- 				<h:outputText value="Nombre " /> -->
-<!-- 				<h:outputText value="#{beanAdministrador.especialidadSeleccionado.nombreEspecialidad}" /> -->
-<!-- 				<h:outputText value="Descripcion: " /> -->
-<!-- 				<h:outputText value="#{beanAdministrador.especialidadSeleccionado.estadoEspecialidad}" /> -->
+	<p:panelGrid> 
+				<h:outputText value="Nombre " /> 
+				<h:outputText value="#{beanAdministrador.especialidadSeleccionado.nombreEspecialidad}" />
+				<h:outputText value="Descripcion: " />
+				<h:outputText value="#{beanAdministrador.especialidadSeleccionado.estadoEspecialidad}" />
 			</p:panelGrid>
 
 			<p:commandButton value="Actualizar" icon="fa fa-save"
