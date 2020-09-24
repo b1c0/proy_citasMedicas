@@ -10,17 +10,33 @@
 </h:head>
 <body>
 <center>
-<h:form>
-	<p:panel header="Login">
-		<p:panelGrid columns="2">
-			<h:outputText value="Correo electronico" />
-			<p:inputText/>
-			<h:outputText value="Clave" />
-			<p:password></p:password>
-			<p:commandButton value="Ingresar" action="vistaAdministrador"></p:commandButton>
-		</p:panelGrid>
+	<p:growl>
+		<p:autoUpdate />
+	</p:growl>
+	<p:panel header="Login" style="width:400px">
+		<h:form>
+			<h:panelGrid columns="2" layout="grid">
+				<h:outputText value="Usuario" />
+				<p:inputText value="#{beanAdministrador.usuarioLogin}" maxlength="10"
+					required="true" requiredMessage="Debe ingresar el usuario"
+					size="10" />
+				<h:outputText value="Clave" />
+				<p:password value="#{beanAdministrador.claveLogin}" size="10">
+					<f:validateLength minimum="4"></f:validateLength>
+				</p:password>
+				<h:outputText value="Tipo de Usuario" />
+				<p:selectOneMenu value="#{beanAdministrador.tipoLogin}">
+					<f:selectItem itemLabel="Seleccione el tipo....."
+						noSelectionOption="true" />
+					<f:selectItem itemLabel="Administrador" itemValue="adm" />
+					<f:selectItem itemLabel="Paciente" itemValue="pct" />
+					<f:selectItem itemLabel="Medico" itemValue="med" />
+				</p:selectOneMenu>
+				<p:commandButton action="#{beanAdministrador.actionLogin()}"
+					value="Ingresar" icon="fa fa-key" />
+			</h:panelGrid>
+		</h:form>
 	</p:panel>
-	</h:form>
-</center>
+	</center>
 </body>
 </html>
