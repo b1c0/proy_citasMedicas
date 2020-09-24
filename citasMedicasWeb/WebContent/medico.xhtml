@@ -20,11 +20,11 @@
 
 	<p:menubar>
 		<f:facet name="options">
+			<p:commandButton value="asd" icon="fa fa-sing-out"></p:commandButton>
 			<p:commandButton value="Cerrar sesión" icon="fa fa-sing-out"
 				action="#{beanUsuario.actionCerrarSesion()}"></p:commandButton>
 		</f:facet>
 	</p:menubar>
-	<input type="hidden" value="#{beanUsuario.id_usuario}" />
 	<h3>
 		<h:outputText
 			value="Bienvenido(a) #{beanUsuario.apellido} #{beanUsuario.nombre} | #{beanUsuario.correo} " />
