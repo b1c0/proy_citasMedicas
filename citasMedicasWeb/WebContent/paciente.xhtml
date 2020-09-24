@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<f:metadata>
+	<f:event listener="#{beanUsuario.actionListenerVerificarLogin()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+<h:head>
+	<f:facet name="first">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+		<title>Paciente</title>
+	</f:facet>
+
+</h:head> 
+<body>
+
+	<p:menubar>
+		<f:facet name="options">
+			<p:commandButton value="Agendar Cita" icon="fa fa-hearbeat"
+				update=":formAgendar" oncomplete="PF('dlgAgendaCita').show();">
+			</p:commandButton>
+			<p:commandButton value="Cerrar sesión" icon="fa fa-sing-out"
+			action="#{beanUsuario.actionCerrarSesion()}"></p:commandButton>
+
+		</f:facet>
+	</p:menubar>
+	<h3>
+		<h:outputText
+			value="Bienvenido(a) #{beanUsuario.apellido} #{beanUsuario.nombre} | #{beanUsuario.correo} " />
+	</h3>
+	<p:panel header="PANEL DE CITAS MEDICAS">
+		<p:growl>
+			<p:autoUpdate />
+		</p:growl>
+		<h:form id="form1">
+			<p:messages>
+				<p:autoUpdate />
+			</p:messages>
+		</h:form>
+		<h:form id="form2">
+			<p:panel header="PRÓXIMAS CITAS">
+				<p:dataTable value="#{beanSolicitudes.listaProximasCitasPaciente}"
+					paginator="true" rows="5" var="e" reflow="TRUE">
+					<p:column headerText="APELLIDO MÉDICO" filterBy="" priority="1">
+						<h:outputText value="#{e.medico.usuarioRol.usuario.apellidos}" />
+					</p:column>
+					<p:column headerText="NOMBRE MÉDICO" filterBy="" priority="1">
+						<h:outputText value="#{e.medico.usuarioRol.usuario.nombres}" />
+					</p:column>
+					<p:column headerText="FECHA" filterBy="" priority="1">
+						<h:outputText value="#{e.fechaCita}" />
+					</p:column>
+					<p:column headerText="HORA" filterBy="" priority="1">
+						<h:outputText value="#{e.horaCita}" />
+					</p:column>
+					<p:column headerText="OPCIONES" priority="1">
+						<p:commandButton value="CONFIRMAR" update="@form, :form2"
+						actionListener="#{beanSolicitudes.buscaryActualizarSolicitud(e)}"></p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+
+			<p:panel header="MIS SOLICITUDES DE CITA">
+				<p:dataTable value="#{beanSolicitudes.listaMisSolicitudesPaciente}"
+					paginator="true" rows="5" var="m" reflow="TRUE">
+					<p:column headerText="APELLIDO MÉDICO" filterBy="" priority="1">
+						<h:outputText value="#{m.medico.usuarioRol.usuario.apellidos}" />
+					</p:column>
+					<p:column headerText="NOMBRE MÉDICO" filterBy="" priority="1">
+						<h:outputText value="#{m.medico.usuarioRol.usuario.nombres}" />
+					</p:column>
+					<p:column headerText="FECHA" filterBy="" priority="1">
+						<h:outputText value="#{m.fechaCita}" />
+					</p:column>
+					<p:column headerText="HORA" filterBy="" priority="1">
+						<h:outputText value="#{m.horaCita}" />
+					</p:column>
+					<p:column headerText="ESTADO" filterBy="" priority="1">
+						<h:outputText value="#{m.estadoSolicitudMedico}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+
+		</h:form>
+
+	</p:panel>
+	<p:dialog header="Agenda una cita" widgetVar="dlgAgendaCita"
+		modal="true">
+		<h:form id="formAgendar">
+			<p:growl>
+				<p:autoUpdate />
+			</p:growl>
+			<h:outputText value="Paciente: " />
+			<h:outputText value="NOMBRES PACIENTE" />
+			<p:panelGrid columns="2">
+				<h:outputText value="Fecha:  " />
+				<p:calendar value="#{beanSolicitudes.fechaCita}"></p:calendar>
+				<h:outputText value="Hora: " />
+				<p:datePicker id="timeonly" value="#{beanSolicitudes.horaCita}" timeOnly="true" pattern="HH:mm" mindate="#{beanSolicitudes.minTime}" maxdate="#{beanSolicitudes.maxTime}" stepMinute="30"/>
+				
+				<h:outputText value="Medico: " />
+				<p:selectOneMenu value="#{beanSolicitudes.codigoMedico}">
+					<f:selectItem itemLabel="Elige al médico"
+						noSelectionOption="true" />
+					<f:selectItems var="p" value="#{beanSolicitudes.listaMedicos}"
+						itemLabel="#{p.usuarioRol.usuario.apellidos}" itemValue="#{p.idMedico}" />
+				</p:selectOneMenu>
+				<h:outputText value="" />
+				<p:commandButton value="Enviar Solicitud" icon="fa fa-save" update="@form, :form2"
+				actionListener="#{beanSolicitudes.actionListenerInsertarSolicitudCitaPaciente()}"/>
+			</p:panelGrid>
+
+		</h:form>
+	</p:dialog>
+
+</body>
+</html>

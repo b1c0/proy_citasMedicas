@@ -6,37 +6,31 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-<title>Login</title>
+	<f:facet name="first">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+		<title>Login</title>
+	</f:facet>
 </h:head>
 <body>
-<center>
-	<p:growl>
-		<p:autoUpdate />
-	</p:growl>
-	<p:panel header="Login" style="width:400px">
-		<h:form>
-			<h:panelGrid columns="2" layout="grid">
-				<h:outputText value="Usuario" />
-				<p:inputText value="#{beanAdministrador.usuarioLogin}" maxlength="10"
-					required="true" requiredMessage="Debe ingresar el usuario"
-					size="10" />
-				<h:outputText value="Clave" />
-				<p:password value="#{beanAdministrador.claveLogin}" size="10">
-					<f:validateLength minimum="4"></f:validateLength>
-				</p:password>
-				<h:outputText value="Tipo de Usuario" />
-				<p:selectOneMenu value="#{beanAdministrador.tipoLogin}">
-					<f:selectItem itemLabel="Seleccione el tipo....."
-						noSelectionOption="true" />
-					<f:selectItem itemLabel="Administrador" itemValue="adm" />
-					<f:selectItem itemLabel="Paciente" itemValue="pct" />
-					<f:selectItem itemLabel="Medico" itemValue="med" />
-				</p:selectOneMenu>
-				<p:commandButton action="#{beanAdministrador.actionLogin()}"
-					value="Ingresar" icon="fa fa-key" />
-			</h:panelGrid>
-		</h:form>
-	</p:panel>
-	</center>
+	<div align="center">
+		<h1>SISTEMA DE ADMINISTRACION DE CITAS MÉDICAS</h1>
+		<p:panel header="LOGIN" style="width:350px">
+			<p:growl autoUpdate="true"></p:growl>
+			<h:form>
+				<p:panelGrid columns="2">
+					<h:outputText value="Correo:" />
+					<p:inputText value="#{beanUsuario.correo}" required="true"></p:inputText>
+					<h:outputText value="Clave:" />
+					<p:password value="#{beanUsuario.clave}"></p:password>
+					<h:outputText value="" />
+					<p:commandButton value="Ingresar" icon="ui-icon-key"
+						action="#{beanUsuario.actionLogin()}"></p:commandButton>
+				</p:panelGrid>
+
+			</h:form>
+		</p:panel>
+	</div>
+
 </body>
 </html>
